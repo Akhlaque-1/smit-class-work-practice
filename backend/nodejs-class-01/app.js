@@ -1,41 +1,22 @@
-console.log("My backend started 🚀");
-console.log("Hello Akhlaque! Welcome to Node.js 🚀");
+console.log("My backend started ");
+console.log("Hello Akhlaque! Welcome to Node.js ");
 
+// Variables
 const name = "Akhlaque Ahmed";
 const city = "Karachi";
 const course = "Web Development";
+
 console.log("my name is " + name + ", city is " + city + " and course is " + course);
 console.log(`my name is ${name}, city is ${city} and course is ${course}`);
 
-
-
-const http = require('http');
-const server = http.createServer((req, res) => {
-  res.write("My First Node.js Server");
-  res.end();
-});
-server.listen(3000, () => {
-  console.log("Server running at http://localhost:3000");
-});
-
-const fs = require ('fs');
-fs.writeFileSync('test.text', 'Hello How R U from Node.js');
-
-const http = require('http');
-const server = http.createServer((req , res) => {
-    res.write("Welcome to Akhlaque's Server");
-    res.end();
-});
-server.listen(3000, () =>{
-console.log("Server running at http://localhost:3000");
-});
-
-
-const fs = require('fs');
-fs.writeFileSync('test.txt', 'Hello from Node.js');
-
+// Core Modules
 const http = require("http");
+const fs = require("fs");
 
+// File System Practice
+fs.writeFileSync("test.txt", "Hello from Node.js");
+
+// Create Server
 const server = http.createServer((req, res) => {
   console.log("req ==>", req.url);
 
@@ -46,11 +27,11 @@ const server = http.createServer((req, res) => {
   }
 
   // Products Route
-  else if (req.url.startsWith("/products")) {
+  else if (req.url === "/products") {
     res.writeHead(200, { "Content-Type": "application/json" });
 
     const products = {
-      Product: [
+      products: [
         { id: 1, title: "product 1" },
         { id: 2, title: "product 2" }
       ]
@@ -60,7 +41,7 @@ const server = http.createServer((req, res) => {
   }
 
   // Todos Route
-  else if (req.url.startsWith("/todos")) {
+  else if (req.url === "/todos") {
     res.writeHead(200, { "Content-Type": "application/json" });
 
     const todos = {
@@ -80,6 +61,7 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(4000, "127.0.0.1", () => {
-  console.log("Server is up and running on PORT: 4000");
+// Start Server
+server.listen(4000, () => {
+  console.log("Server running at http://localhost:4000");
 });
